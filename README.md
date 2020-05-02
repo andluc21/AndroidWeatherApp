@@ -1,4 +1,4 @@
-# demoappweek0
+# Weather App
 Our first Android app
 
 AD 340 
