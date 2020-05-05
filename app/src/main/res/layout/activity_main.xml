@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,12 +9,61 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello AD 340"
+        android:text="Enter your zipcode"
+        android:textSize="@dimen/title_text_Height"
+        app:layout_constraintEnd_toEndOf="@+id/enterButton"
+        app:layout_constraintStart_toStartOf="@+id/enterButton"
+        app:layout_constraintTop_toBottomOf="@id/enterButton" />
+
+    <ImageView
+        android:id="@+id/enterButton"
+        android:layout_width="@dimen/zipcode_entry_icon_size"
+        android:layout_height="@dimen/zipcode_entry_icon_size"
+        android:src="@drawable/ic_location_on_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.298" />
+
+
+    <EditText
+        android:id="@+id/zipcodeEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter zipcode"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/title"
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/ourButton1"
+        android:layout_width="wrap_content"
+        android:text="SUBMIT ZIPCODE"
+        app:layout_constraintEnd_toEndOf="@+id/zipcodeEditText"
+        app:layout_constraintStart_toStartOf="@+id/zipcodeEditText"
+        app:layout_constraintTop_toBottomOf="@+id/zipcodeEditText"
+        android:layout_height="45sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/forecastList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#ABABAB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ourButton1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
