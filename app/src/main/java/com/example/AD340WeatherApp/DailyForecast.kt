@@ -1,4 +1,4 @@
-package com.example.AD340WeatherApp
+package com.example.ad340weatherapp
 
 data class DailyForecast(
     val temp: Float,

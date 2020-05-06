@@ -1,4 +1,4 @@
-package com.example.AD340WeatherApp
+package com.example.ad340weatherapp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

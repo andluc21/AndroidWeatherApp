@@ -1,4 +1,4 @@
-package com.example.AD340WeatherApp
+package com.example.ad340weatherapp
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -22,8 +22,8 @@ class ForecastRepository {
             in Float.MIN_VALUE.rangeTo(0f) -> "Anything below 0 doesn't make sense"
             in 0f.rangeTo(32f) -> "Way too cold"
             in 32f.rangeTo(55f) -> "Still quite chilly"
-            in 55f.rangeTo(65f) -> "Almost there..."
-            in 65f.rangeTo(75f) -> "Finally some enjoyable weather"
+            in 55f.rangeTo(65f) -> "Almost tolerable..."
+            in 65f.rangeTo(75f) -> "No overcoat necessary"
             in 75f.rangeTo(85f) -> "Perfection"
             in 85f.rangeTo(95f) -> "Hopefully you have sunscreen"
             in 95f.rangeTo(Float.MAX_VALUE) -> "Yikes!"
