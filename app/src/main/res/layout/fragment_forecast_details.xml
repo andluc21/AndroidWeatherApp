@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ad340weatherapp.details.ForecastDetailsActivity">
+    tools:context="com.example.ad340weatherapp.details.ForecastDetailsFragment">
 
     <TextView
         android:id="@+id/tempText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="76dp"
         android:layout_marginEnd="16dp"
         android:maxLines="1"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
