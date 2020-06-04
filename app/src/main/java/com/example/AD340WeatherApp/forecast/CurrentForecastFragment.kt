@@ -21,8 +21,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
  */
 class CurrentForecastFragment : Fragment() {
 
-    private lateinit var tempDisplaySettingManager: TempDisplaySettingManager
+
     private val forecastRepository = ForecastRepository()
+    private lateinit var locationRepository: LocationRepository
+    private lateinit var tempDisplaySettingManager: TempDisplaySettingManager
+
 
 
     override fun onCreateView(
@@ -50,25 +53,32 @@ class CurrentForecastFragment : Fragment() {
 
         // Create the observer which updates the UI in response to forecast updates
 
-
-        val weeklyForecastObserver = Observer<List<DailyForecast>> { forecastItems ->
+        val currentForecastObserver = Observer<DailyForecast> { forecastItem ->
             // update our list adapter
-            dailyForecastAdapter.submitList(forecastItems)
+                dailyForecastAdapter.submitList(listOf(forecastItem))
         }
 
-        forecastRepository.weeklyForecast.observe(this, weeklyForecastObserver)
+        forecastRepository.currentForecast.observe(viewLifecycleOwner, currentForecastObserver)
 
 
         val locationEntryButton: FloatingActionButton = view.findViewById(R.id.locationEntryButton)
         locationEntryButton.setOnClickListener {
             showLocationEntry()
 
+        }
 
+        locationRepository = LocationRepository(requireContext())
+        val savedLocationObserver = Observer<Location> { savedLocation ->
+            when (savedLocation) {
+                is Location.Zipcode -> forecastRepository.loadCurrentForecast(savedLocation.zipzode)
+
+            }
         }
 
 
+        locationRepository.savedLocation.observe(viewLifecycleOwner, savedLocationObserver)
 
-        forecastRepository.loadForecast(zipcode)
+
 
         return view
     }
