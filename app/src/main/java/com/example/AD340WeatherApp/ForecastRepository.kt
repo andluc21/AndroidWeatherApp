@@ -17,7 +17,7 @@ class ForecastRepository {
 
 
     fun loadWeeklyForecast(zipcode: String) {
-        val randomValues = List (7) { Random.nextFloat().rem(100) * 100}
+        val randomValues = List (8) { Random.nextFloat().rem(100) * 100}
         val forecastItems = randomValues.map {
             DailyForecast(Date(), it, getTempDescription(it))
         }
