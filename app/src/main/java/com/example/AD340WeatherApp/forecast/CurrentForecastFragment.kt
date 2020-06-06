@@ -7,14 +7,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ad340weatherapp.*
+import com.example.ad340weatherapp.api.CurrentWeather
 
 import com.example.ad340weatherapp.details.ForecastDetailsFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.fragment_current_forecast.*
 
 /**
  * A simple [Fragment] subclass.
@@ -36,29 +39,25 @@ class CurrentForecastFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_current_forecast, container, false)
 
+        val locationName: TextView = view.findViewById(R.id.locationName)
+
+        val tempText: TextView = view.findViewById(R.id.tempText)
+
         val zipcode = arguments?.getString(KEY_ZIPCODE) ?: ""
 
 
         tempDisplaySettingManager = TempDisplaySettingManager(requireContext())
 
 
-        val forecastList: RecyclerView = view.findViewById(R.id.forecastList)
-        forecastList.layoutManager = LinearLayoutManager(requireContext())
-
-        val dailyForecastAdapter = DailyForecastAdapter(tempDisplaySettingManager) { forecast ->
-            showForecastDetails(forecast)
-        }
-
-        forecastList.adapter = dailyForecastAdapter
 
         // Create the observer which updates the UI in response to forecast updates
 
-        val currentForecastObserver = Observer<DailyForecast> { forecastItem ->
-            // update our list adapter
-                dailyForecastAdapter.submitList(listOf(forecastItem))
+        val currentWeatherObserver = Observer<CurrentWeather> { weather ->
+            locationName.text = weather.name
+            tempText.text = formatTempForDisplay(weather.forecast.temp, tempDisplaySettingManager.getTempDisplaySetting())
         }
 
-        forecastRepository.currentForecast.observe(viewLifecycleOwner, currentForecastObserver)
+        forecastRepository.currentWeather.observe(viewLifecycleOwner, currentWeatherObserver)
 
 
         val locationEntryButton: FloatingActionButton = view.findViewById(R.id.locationEntryButton)
