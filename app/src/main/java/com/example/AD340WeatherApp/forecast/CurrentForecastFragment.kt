@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ad340weatherapp.*
 import com.example.ad340weatherapp.api.CurrentWeather
+import com.example.ad340weatherapp.api.DailyForecast
 
 import com.example.ad340weatherapp.details.ForecastDetailsFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -89,13 +90,6 @@ class CurrentForecastFragment : Fragment() {
             findNavController().navigate(action)
     }
 
-    private fun showForecastDetails(forecast: DailyForecast) {
-        val action = CurrentForecastFragmentDirections.actionCurrentForecastFragmentToForecastDetailsFragment(forecast.temp, forecast.description)
-        findNavController().navigate(action)
-
-
-
-    }
 
 
     companion object {

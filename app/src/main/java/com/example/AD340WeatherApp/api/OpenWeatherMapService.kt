@@ -31,5 +31,14 @@ interface OpenWeatherMapService {
 
     ): Call<CurrentWeather>
 
+    @GET("/data/2.5/onecall")
+    fun sevenDayForecast(
+        @Query("lat") lat: Float,
+        @Query("lon") lon: Float,
+        @Query("exclude") exclude: String,
+        @Query("units") units: String,
+        @Query("appid") apiKey: String
+
+    ): Call<WeeklyForecast>
 
 }
