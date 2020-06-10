@@ -1,5 +1,3 @@
-# demoappweek0
-Our first Android app
+# Our Api Weather App
 
-AD 340 
 Luca Andolina
