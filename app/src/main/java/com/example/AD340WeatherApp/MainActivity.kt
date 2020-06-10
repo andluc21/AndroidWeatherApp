@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.ui.setupWithNavController
-
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import com.example.ad340weatherapp.forecast.CurrentForecastFragmentDirections
