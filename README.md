@@ -1,5 +1,5 @@
-# demoappweek0
-Our first Android app
+# WeatherForecast
+Weather App to fetch current and 7 days / 2 hours data from https://openweathermap.org/
 
-AD 340 
-Luca Andolina
+## Usage
+<li>App gives weather for any given zipcode </li>
