@@ -1,2 +1,2 @@
-rootProject.name='AD340WeatherApp'
+rootProject.name='PremiseWeather'
 include ':app'
